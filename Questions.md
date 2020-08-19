@@ -6,7 +6,7 @@ Please see the attached CSV files. These files contain a client’s employee dat
 
 ## Question 1
 
-Using the files given, design a database that can store data of this nature. Send us the ERD of the proposed database in any format you prefer. Eliminate data redundancies where possible.
+Using the files given, design a SQL database that can store data of this nature. Send us the ERD of the proposed database in any format you prefer. Eliminate data redundancies where possible.
 
 
 ## Question 2
@@ -14,7 +14,7 @@ Using the files given, design a database that can store data of this nature. Sen
 The company has decided to give each employee a company email. All current email addresses will be ported over, but the Host will change to “company”. As an example, please refer to Figure 1.
 
 The email in Figure 1 will be updated to example@company.com. They need you to update the database to reflect this change.
-Import the employee file to SQL as a table and come up with a SQL script to update all employee email addresses in the Employee table accordingly. 
+Import the attached CSV employee file to SQL as a table and come up with a SQL script to update all employee email addresses in the table accordingly. 
 Please note* 
 *	The user must remain unchanged.
 *	The domains must remain unchanged.
