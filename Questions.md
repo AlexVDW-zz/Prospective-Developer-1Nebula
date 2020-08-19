@@ -1,4 +1,4 @@
-# Code Challenge
+# Database Challenge
 
 
 Please see the attached CSV files. These files contain a client’s employee data as well as event detail for a single day from all relevant mobile vendors for SIMs owned by those employees. Please refer to these files when answering the following questions.
@@ -14,69 +14,150 @@ Using the files given, design a database that can store data of this nature. Sen
 The company has decided to give each employee a company email. All current email addresses will be ported over, but the Host will change to “company”. As an example, please refer to Figure 1.
 
 The email in Figure 1 will be updated to example@company.com. They need you to update the database to reflect this change.
-Come up with a solution to update all employee email addresses accordingly. 
-Please note*
-*	Assume the table you are updating matches the attached employee file exactly. 
-*	You can use any languages you like.
+Import the employee file to SQL as a table and come up with a SQL script to update all employee email addresses in the Employee table accordingly. 
+Please note* 
+*	The user must remain unchanged.
 *	The domains must remain unchanged.
 
+# Back-end Code Challenges
+* Only send back the code required for your the challenges
 
-## Question 3
+## Question 1
 
-A newly written query is running slower than expected. The user wants to see how many tickets was sold in each genre over a specific period
-Table Examples:
-[Tickets] (Stores all the movie tickets sold) 
-TicketID	Seat Number	MovieID
-10	1A	1
+You are probably familiar with social media "like" systems. People can like posts and the UI displays who likes certain posts.
+Write a method that takes in a list of names and produces the format below:
 
-[Movies] (Stores all the different Movies)
-MovieID	Name	Genre
-1	Citizen Kane	Drama
-
-
-Pseudo code:
- 
-SELECT all the unique values in COLUMN [Movies].[Genres] 
-       as well as a COUNT of [Tickets].[Number]
-       
-FROM TABLE [Tickets] (Stores all the movie tickets sold) and 
-
-JOIN [Movies] (Stores all the different Movies) on to it to get the genre
-
-It should only count WHERE the ticket purchase date falls in the specified timeframe
-
-SQL example:
-
-```sql
-SELECT DISTINCT mov.[Genres], COUNT(tic.[Number])
-
-FROM [Tickets] tic
-
-JOIN [Movies] mov ON mov.[MovieID] = tic.[MovieID]
-
-WHERE tic.[PurchaseDate] >= '2020-01-01' AND tic.[PurchaseDate] <= '2020-04-01'
-
-GROUP BY mov.[Genres]
+```csharp
+Likes(new List<string>()) => "no one likes this"
+Likes(new List<string> {"Peter"}) => "Peter likes this"
+Likes(new List<string> {"Jacob", "Alex"}) => "Jacob and Alex like this"
+Likes(new List<string> {"Max", "John", "Mark"}) => "Max, John and Mark like this"
+Likes(new List<string> {"Alex", "Jacob", "Mark", "Max"}) => "Alex, Jacob and 2 others like this"
 ```
 
-Please note:
-*	The [Tickets] table has millions of rows.
-*	The resulting data should be less than 30 rows.
-*	Assume the query is written exactly as the pseudocode states and no extra mistakes are made.
+__Note__: if the amount of people who like something is 4 or more, print out the first 2 names following by how many others like it.
 
-Please answer any two of the following questions
+## Question 2
+The last task is about refactoring of code. Below you are given a class that creates robots and cars, this class uses a robot service, a part service, and a car service, which can be any web services (RESTful or SOAP).
 
-Please describe how you would go about improving this query’s execution time.
+You need to refactor this class as you see fit. The goal is to make the class more maintainable. You should apply any principles or patterns you think are necessary.
 
-OR
+Don't write out the web service classes. Assume they have an implementation and you are just consuming them.
 
-Please propose possible tests to determine the cause of the slow execution
+* Bonus: what can be done to reduce tight coupling in a class?
 
-OR
+```csharp
+public class Factory
+{
+    private RobotService _robotService;
+    private PartsService _partsService;
+    private CarService _carService;
+    
+    public Factory(RobotService robotService, PartsService partsService)
+    {
+        _robotService = new RobotService();
+        _partsService = new PartsService();
+        _carService = new CarService();
+    }
 
-Please advise on database structure and design changes we can investigate to mitigate slow queries such as this
+    public Robot BuildRobot(Enum RobotType)
+    {
+        if(RobotType == RoboticDog)
+            var parts = GetRobotPartsFor(RoboticDog);
+            return _robotService.BuildRobotDog(parts);
+        else if(RobotType == RoboticCat)
+            var parts = GetRobotPartsFor(RoboticCat);
+            return _robotService.BuildRobotCat(parts);
+        else if(RobotType == RoboticDrone)
+            var parts = GetRobotPartsFor(RoboticDrone);
+            return _robotService.BuildRobotDrone(parts);
+        else if (RobotType == RoboticCar)
+            var parts = GetRobotPartsFor(RoboticCar);
+            return _robotService.BuildRobotCar(parts);
+        else
+            return null;
+    }
 
+    public Car BuildCar(Enum CarType)
+    {
+        if(CarType == Toyota)
+            var parts = GetCarPartsFor(Toyota);
+            return _carService.BuildCar(parts);
+        else if(RobotType == Ford)
+            var parts = GetCarPartsFor(Ford);
+            return _carService.BuildCar(parts);
+        else if(RobotType == Opel)
+            var parts = GetCarPartsFor(Opel);
+            return _carService.BuildCar(parts);
+        else if (RobotType == Honda)
+            var parts = GetCarPartsFor(Honda);
+            return _carService.BuildCar(parts);
+        else
+            return null;
+    }
 
-## Question 4
+    public List<Parts> GetRobotPartsFor(Enum RobotType)
+    {
+        return _partsService.GetParts(RobotType);
+    }
 
-In the language of your choosing, write a method or script that takes an integer parameter and prints the next five Fibonacci numbers starting at that interval. Any possible errors should be handled.
+    public List<Parts> GetCarPartsFor(Enum CarType)
+    {
+        return _partsService.GetParts(CarType);
+    }
+}
+```
+# Front-end Code Challenges
+
+## Question 1
+Given the below code snippet, solve the problems that follow:
+
+```html
+<div id="firstDiv" class="red-card">
+<div id="secondDiv" class="red-card">
+
+<style>
+    #secondDiv {
+        background: orange;
+    }
+
+    div {
+        height: 150px;
+        width: 150px;
+        background: green;
+    }
+
+    .red-card {
+        background: red;
+    }
+
+    .yellow-card {
+        background: yellow;
+    }
+</style>
+```
+
+1. What will the colour of both div elements be?
+2. How would you dynamically target ```firstDiv``` and make it's colour pink? (provide the code snippet)
+3. How would you dynamically target ```secondDiv``` and add the ```yellow-card``` class to its class list? (provide the code snippet)
+
+## Question 2
+Consider the ```compareIt``` function definition
+
+```javascript
+function compareIt(num1, num2) {
+    return num1 == num2;
+}
+
+compareIt(5, "5");
+```
+
+1. Why will the function call return true? 
+2. How could one change this function so that data types are checked as well as values?
+
+## Question 3
+1. How would you make a web page mobile friendly (i.e responsive)? 
+   * Provide examples of this.
+2. What is the benefit of bundling .js scripts into one file? 
+3. What needs to be done to ensure the browser understands Sass styling?
+4. What should be done to ensure browser compatibility with newer flavours of JavaScript like ES6/7?
