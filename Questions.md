@@ -1,4 +1,4 @@
-# Database Challenge
+# Database Challenges
 
 
 Please see the attached CSV files. These files contain a client’s employee data as well as event detail for a single day from all relevant mobile vendors for SIMs owned by those employees. Please refer to these files when answering the following questions.
@@ -17,7 +17,7 @@ The email in Figure 1 will be updated to example@company.com. They need you to u
 Import the attached CSV employee file to SQL as a table and come up with a SQL script to update all employee email addresses in the table accordingly. 
 Please note* 
 *	The user must remain unchanged.
-*	The domains must remain unchanged.
+*	The domain must remain unchanged.
 
 # Back-end Code Challenges
 * Only send back the code required for your the challenges
