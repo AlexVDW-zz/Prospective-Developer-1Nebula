@@ -83,13 +83,13 @@ public class Factory
         if(CarType == Toyota)
             var parts = GetCarPartsFor(Toyota);
             return _carService.BuildCar(parts);
-        else if(CarType == Ford)
+        else if(RobotType == Ford)
             var parts = GetCarPartsFor(Ford);
             return _carService.BuildCar(parts);
-        else if(CarType == Opel)
+        else if(RobotType == Opel)
             var parts = GetCarPartsFor(Opel);
             return _carService.BuildCar(parts);
-        else if (CarType == Honda)
+        else if (RobotType == Honda)
             var parts = GetCarPartsFor(Honda);
             return _carService.BuildCar(parts);
         else
