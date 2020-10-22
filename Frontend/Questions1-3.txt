@@ -1,0 +1,45 @@
+Question 1
+
+1.
+firstDiv will be red and secondDiv will be orange
+
+2.
+document.getElementById(firstDiv).style.color = "pink"
+
+3.
+document.getElementById(secondDiv).classList.add("yellow-card");
+
+Question 2
+
+1. 
+because 5 and "5" and '5' have the same values, and only differ in type
+
+2.
+use a === instead
+
+Question 3
+
+1.
+Add conditional styling based on screen size and width
+CSS already allows for this using @media style rules.
+
+@media only screen and (max-width: 500px) {
+  .hidden-on-mobile-view
+	{
+		display : none;
+	}
+}
+
+The elements that have the class hidden-on-mobile-view will be hidden.
+
+Bootstrap can however be used to enhance this further.
+
+2.
+Faster initial loading of the webpage
+
+3.
+install sass on your project using a package manager (yarn or npm) and use the extention scss on your stylesheets
+instead of css
+
+4.
+Use a javascript compiler such as babel
